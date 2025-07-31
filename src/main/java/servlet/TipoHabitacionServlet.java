@@ -1,8 +1,9 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.LinkedList;
 
+import data.TipoHabitacionDao;
 import entities.TipoHabitacion;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,6 +14,11 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet({ "/TipoHabitacion", "/tipohabitacion", "/Tipohabitacion" })
 public class TipoHabitacionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private TipoHabitacionDao tipoHabitacionDao;
+
+	public void init() {
+		tipoHabitacionDao = new TipoHabitacionDao();
+	}
 
 	public TipoHabitacionServlet() {
 		super();
@@ -39,7 +45,7 @@ public class TipoHabitacionServlet extends HttpServlet {
 	}
 
 	private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<TipoHabitacion> tipos = null;
+		LinkedList<TipoHabitacion> tipos = tipoHabitacionDao.list();
 
 	}
 
