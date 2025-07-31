@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import data.TipoHabitacionDao;
 import entities.TipoHabitacion;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -46,6 +47,9 @@ public class TipoHabitacionServlet extends HttpServlet {
 
 	private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LinkedList<TipoHabitacion> tipos = tipoHabitacionDao.list();
+		request.setAttribute("listTipos", tipos);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/vistas/tipo-list.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
