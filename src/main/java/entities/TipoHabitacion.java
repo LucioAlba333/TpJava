@@ -24,5 +24,4 @@ public class TipoHabitacion {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 }
